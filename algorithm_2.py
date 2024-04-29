@@ -1,24 +1,28 @@
 import random
+import time
 
 def insertion_sort(arr):
     n = len(arr)
+    start_time = time.perf_counter()
     for i in range(1, n):
         key = arr[i]
         j = i - 1
         while j >= 0 and arr[j] > key:
             arr[j + 1] = arr[j]
             j -= 1
-            print(f"Step {i}: {arr}")
         arr[j + 1] = key
         print(f"Step {i}: {arr}")
+    end_time = time.perf_counter()
+    execution_time = end_time - start_time
+    print("Execution Time:", execution_time, "seconds")
+
+def generate_random_numbers(amount, num_range):
+    return [random.randint(1, num_range) for _ in range(amount)]
 
 def print_array(arr):
     for i in arr:
         print(i, end=" ")
     print()
-
-def generate_random_numbers(amount, num_range):
-    return [random.randint(1, num_range) for _ in range(amount)]
 
 def main():
     amount = int(input("Enter the amount of numbers to generate: "))
